@@ -93,7 +93,7 @@ def predict():
     return render_template('employee.html', prediction_text='Possibility of Employee Leaving is :- {}'.format(Value))
 
 if __name__ == "__main__":
-    app.run (debug=True)
+    app.run (debug=False)
 
 
 

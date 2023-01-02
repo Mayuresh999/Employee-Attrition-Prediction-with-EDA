@@ -6,9 +6,9 @@ import streamlit as st
 import streamlit.components.v1 as components
 # st.title('HTML test')
 HtmlFile = open('templates/employee.html', 'r')
-# raw_html = HtmlFile.read().encode("utf-8")
-# raw_html = base64.b64encode(raw_html).decode()
-st.components.v1.html(HtmlFile, width=None, height=None, scrolling=False)
+raw_html = HtmlFile.read().encode("utf-8")
+raw_html = base64.b64encode(raw_html).decode()
+st.components.v1.html(raw_html, width=None, height=None, scrolling=False)
 
 app = Flask (__name__)
 model = pickle.load (open ('model.pkl','rb'))

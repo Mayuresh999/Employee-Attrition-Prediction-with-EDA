@@ -5,7 +5,7 @@ import base64
 import streamlit as st
 import streamlit.components.v1 as components
 st.title('HTML test')
-HtmlFile = open('employee.html', 'r')
+HtmlFile = open('templates/employee.html', 'r')
 raw_html = HtmlFile.read().encode("utf-8")
 raw_html = base64.b64encode(raw_html).decode()
 components.iframe(f"data:text/html;base64,{raw_html}", height=400)

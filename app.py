@@ -8,7 +8,7 @@ st.title('HTML test')
 HtmlFile = open('templates/employee.html', 'r')
 raw_html = HtmlFile.read().encode("utf-8")
 raw_html = base64.b64encode(raw_html).decode()
-components.iframe(f"data:text/html;base64,{raw_html}", height=400)
+components.iframe(f"data:text/html;base64,{raw_html}")
 
 app = Flask (__name__)
 model = pickle.load (open ('model.pkl','rb'))

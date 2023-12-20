@@ -5,7 +5,9 @@ import pickle
 
 app = Flask (__name__)
 model = pickle.load (open ('model.pkl','rb'))
-print("model loaded")
+print('\nFollow link : http://localhost:8080 to see the project\n')
+print("\nModel Loaded...\n")
+
 # Project running on 3.11.0 version of python.
 
 @app.route ('/')
@@ -45,53 +47,41 @@ def predict():
 
     if OverTime in OT.keys():
         OverTime = OT.get(OverTime)
-        # print(OverTime, "overtime")
 
     if JobLevel in JL.keys():
         JobLevel = JL.get(JobLevel)
-        # print(JobLevel, "jl")
 
     if JobRole in JR.keys():
         JobRole = JR.get(JobRole)
-        print(JobRole, "jr")
 
     if StockOptionLevel in SO.keys():
         StockOptionLevel = SO.get(StockOptionLevel)
-        # print(StockOptionLevel, "sol")
 
     if MaritalStatus in MS.keys():
         MaritalStatus = MS.get(MaritalStatus)
-        # print(MaritalStatus, "ms")
 
     if EnvSat in ES.keys():
         EnvSat = ES.get(EnvSat)
-        # print(EnvSat, "env")
 
     if JobInvol in JI.keys():
         JobInvol = JI.get(JobInvol)
-        # print(JobInvol,"env")
 
     Out = {"MonthlyIncome" : int(MonthlyIncome), "TotalWorkingYears" : int(TotalWorkingYears), "Age" : int(Age), "YearsAtCompany" : int(YearsAtCompany), 
        "YearsWithCurrManager" : int(YearsWithCurrManager), "YearsInCurrentRole" : int(YearsInCurrentRole), "OverTime" : OverTime, 
        "joblev" : JobLevel, "JobRole" : JobRole, "stockopt" : StockOptionLevel, "MaritalStatus" : MaritalStatus, 
        "envsat" : EnvSat, "jobnvol" : JobInvol}
-    # print(Out)
 
     data_df = pd.DataFrame(Out, index=[0])
-    # print(data_df)
-    # print(data_df.dtypes)
     prediction = model.predict(data_df)
     P = prediction[0]
-    # print(P)
 
     if P == 1:
         Value = "Yes"
-        # print(Value)
     else:
         Value = "No"
-        # print(Value)
 
     return render_template('employee.html', prediction_text='Possibility of Employee Leaving is :- {}'.format(Value))
 
 if __name__ == "__main__":
-    app.run (debug=True)
+    app.run(host='0.0.0.0', port='8080')
+    

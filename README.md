@@ -1,6 +1,8 @@
 # Employee-Attrition-Prediction-with-EDA
 A predictor system that can accurately predict whether the employee will stay or leave the organization when a form is filled by the user. A predictor model is trained on IBM Employee dataset using Xtreme Gradient Boosting (XGB). 
 
+# Docker Image for the project
+docker pull mayuresh999/employee_attrition_prediction:latest
 
 ![page1](https://github.com/Mayuresh999/Employee-Attrition-Prediction-with-EDA/assets/95702726/1e2197c0-c2ca-48dc-9551-b1e121419b85)
 
